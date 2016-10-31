@@ -3,26 +3,27 @@ using System.Collections;
 
 public class BulletShooter : MonoBehaviour {
 	public GameObject BulletPrefab;
-
-	public Transform Muzzle;
+	public GameObject Machine;
 
 	public float speed = 100;
+	public float vanishtime=10;
 
-	// Use this for initialization
 	void Start () {
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+	void FixedUpdate () {
 		if (Input.GetKeyDown(KeyCode.Space)) {
 			Shoot ();
 		}
 	}
+	//弾を発射-消去する//
 	void Shoot(){
-		GameObject Bullets = Instantiate (BulletPrefab)as GameObject;
-		transform.position = Muzzle.position;
-		Vector3 force;
-		force = this.gameObject.transform.forward * speed;
-		Bullets.GetComponent<Rigidbody> ().AddForce (force);
+		//弾のコピーをプレハブから作る//
+		GameObject Bullet = Instantiate (BulletPrefab)as GameObject;
+		//Enemyにも転用可能//
+		Bullet.transform.position = Machine.transform.position;
+		Rigidbody BulletRigid = Bullet.GetComponent<Rigidbody> ();
+		BulletRigid.AddForce (transform.forward * speed,ForceMode.Impulse);
+		Destroy (Bullet, vanishtime);
 	}
 }
