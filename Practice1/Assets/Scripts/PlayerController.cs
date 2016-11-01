@@ -3,7 +3,6 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour {
 	public float speed = 10;
-	public GameObject Bullet;
 	void Start(){
 	}
 

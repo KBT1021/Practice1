@@ -1,21 +1,30 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BulletShooter : MonoBehaviour {
+public class EnemyBulletShooter : MonoBehaviour {
+	public float speed=5;
+	public float vanishtime=2;
+	public float number=10;
+	public float span=0.5f;
+	float delta=0;
 	public GameObject BulletPrefab;
 	public GameObject Machine;
 
-	public float speed = 100;
-	public float vanishtime = 2;
-
 	// Use this for initialization
 	void Start () {
+	
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown (KeyCode.Space)) {
-			Shoot ();
+		int count = 0;
+		this.delta += Time.deltaTime;
+		while (count < number) {
+			if (this.delta > this.span) {
+				this.delta = 0;
+				count++;
+				Shoot ();
+			}
 		}
 	}
 	void Shoot(){
@@ -28,4 +37,5 @@ public class BulletShooter : MonoBehaviour {
 		//弾の消失//
 		Destroy (Bullet, vanishtime);
 	}
+		
 }
