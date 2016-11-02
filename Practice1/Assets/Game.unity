@@ -103,7 +103,7 @@ GameObject:
   - 23: {fileID: 61553849}
   - 54: {fileID: 61553853}
   - 114: {fileID: 61553854}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -146,7 +146,7 @@ CapsuleCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 61553848}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5
   m_Height: 1
@@ -199,7 +199,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dbd34bebda0a2b438a67fbe4564df89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.5
+  Speed: 1
 --- !u!1 &97463197
 GameObject:
   m_ObjectHideFlags: 0
@@ -228,6 +228,60 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
+--- !u!1 &358262081
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 358262083}
+  - 65: {fileID: 358262082}
+  - 114: {fileID: 358262084}
+  m_Layer: 0
+  m_Name: DestroyArea
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &358262082
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 358262081}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 100, y: 100, z: 100}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &358262083
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 358262081}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.38, y: 0.09000003, z: -1.01}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+--- !u!114 &358262084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 358262081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b841829f3b26c274ca99f8654564c518, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 61553848}
 --- !u!1 &511244201
 GameObject:
   m_ObjectHideFlags: 0
@@ -240,7 +294,7 @@ GameObject:
   - 65: {fileID: 511244203}
   - 23: {fileID: 511244202}
   - 114: {fileID: 511244206}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Enemy1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -283,7 +337,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 511244201}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -303,9 +357,10 @@ Transform:
   m_GameObject: {fileID: 511244201}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.38, y: 0.09000003, z: -1.01}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
+  - {fileID: 1110456579}
   - {fileID: 1325568453}
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -320,14 +375,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ab80658cfaef22488c5ed1b8e46e28e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  x2co: 3
-  x1co: 0
-  x0co: 0
-  initialx: -10
-  initialz: 10
-  machinespeed: 1
-  speedx: 1
-  vanishtime: 10
+  x3Coefficient: 2
+  x2Coefficient: 0
+  x1Coefficient: 1
+  InitialX: -10
+  InitialZ: 10
+  MachineSpeed: 2
+  SpeedOfX: 2
+  VanishTime: 10
   Player: {fileID: 61553848}
 --- !u!1 &633211600
 GameObject:
@@ -392,6 +447,53 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
+--- !u!1 &1110456578
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1110456579}
+  - 114: {fileID: 1110456580}
+  m_Layer: 10
+  m_Name: Enemy1BulletShooter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1110456579
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1110456578}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 511244205}
+  m_RootOrder: 0
+--- !u!114 &1110456580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1110456578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a654129cedf4f5439e20ee30c845d5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Speed: 5
+  BulletNumber: 10
+  ShootSpan: 0.5
+  AngularY: 150
+  BulletPrefab: {fileID: 1000013757775382, guid: 2983bc191a1895544949a5555ea5f477,
+    type: 2}
+  Machine: {fileID: 511244201}
 --- !u!1 &1325568452
 GameObject:
   m_ObjectHideFlags: 0
@@ -401,7 +503,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1325568453}
   - 114: {fileID: 1325568454}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Enemy1BulletShooter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -420,7 +522,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 511244205}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!114 &1325568454
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -432,10 +534,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a654129cedf4f5439e20ee30c845d5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  vanishtime: 2
-  number: 10
-  span: 0.5
+  Speed: 5
+  BulletNumber: 10
+  ShootSpan: 0.5
+  AngularY: 210
   BulletPrefab: {fileID: 1000013757775382, guid: 2983bc191a1895544949a5555ea5f477,
     type: 2}
   Machine: {fileID: 511244201}
@@ -448,7 +550,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1692252810}
   - 114: {fileID: 1692252809}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PlayerBulletShooter
   m_TagString: Untagged
   m_Icon: {fileID: 0}

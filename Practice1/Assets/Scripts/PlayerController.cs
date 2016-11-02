@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class PlayerController : MonoBehaviour {
-	public float speed = 10;
+	public float Speed = 10;
 	void Start(){
 	}
 
@@ -11,6 +11,6 @@ public class PlayerController : MonoBehaviour {
 		//位置の移動//
 		float x = Input.GetAxis ("Horizontal");
 		float z = Input.GetAxis ("Vertical");
-		transform.Translate (x * speed, 0, z * speed);
+		transform.Translate (x * Speed, 0, z * Speed);
 	}
 }
