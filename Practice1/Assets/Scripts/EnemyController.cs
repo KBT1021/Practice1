@@ -9,7 +9,9 @@ public class EnemyController : MonoBehaviour {
 	//Playerからの位置（スクロール対策）//
 	public float initialx = 10;
 	public float initialz = 10;
-	public float speed = 1;
+	public float machinespeed = 1;
+	public float speedx = 1;
+	public float vanishtime=10.0f;
 	public GameObject Player;
 
 
@@ -22,9 +24,9 @@ public class EnemyController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		float delta = 0.01f;
-		float dx = delta * speed;
+		float dx = delta * machinespeed;
 	//放物線上を動くようにしてみるz=x2co*x^2+x1co*x+x0co//
-		transform.Translate(dx,0,x2co*dx*dx+x1co*dx+x0co);
-		Destroy (gameObject,10.0f);
+		transform.Translate(dx*speedx,0,x2co*dx*dx+x1co*dx+x0co);
+		Destroy (gameObject,vanishtime);
 	}
 }

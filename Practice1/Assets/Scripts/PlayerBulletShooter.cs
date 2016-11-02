@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BulletShooter : MonoBehaviour {
+public class PlayerBulletShooter : MonoBehaviour {
 	public GameObject BulletPrefab;
 	public GameObject Machine;
 
