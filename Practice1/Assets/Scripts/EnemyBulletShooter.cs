@@ -7,6 +7,7 @@ public class EnemyBulletShooter : MonoBehaviour {
 	public float number=10;
 	public float span=0.5f;
 	float delta=0;
+	int count=0;
 	public GameObject BulletPrefab;
 	public GameObject Machine;
 
@@ -17,16 +18,15 @@ public class EnemyBulletShooter : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		int count = 0;
 		this.delta += Time.deltaTime;
-		while (count < number) {
 			if (this.delta > this.span) {
+			if (count < number) {
 				this.delta = 0;
-				count++;
 				Shoot ();
 			}
+			count++;
+			}
 		}
-	}
 	void Shoot(){
 		//弾の生成//
 		GameObject Bullet = Instantiate (BulletPrefab)as GameObject;
